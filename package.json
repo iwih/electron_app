@@ -6,10 +6,10 @@
     "axios": "^0.18.0",
     "browser": "^0.2.6",
     "cross-env": "^5.2.0",
-    "electron": "^2.0.8",
     "electron-is-dev": "^0.3.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.3"
@@ -22,10 +22,11 @@
     "electron-build": "electron-builder",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
+    "electron": "^2.0.8",
     "electron-build": "^0.0.3",
     "electron-builder": "^20.28.4",
     "wait-on": "^3.0.1"
