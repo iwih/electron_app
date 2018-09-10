@@ -1,6 +1,8 @@
 import React from 'react';
 import "./App.css"
 import axios from 'axios'
+import {Link} from "react-router-dom";
+import './Router'
 
 class App extends React.Component {
     state = {
@@ -21,9 +23,18 @@ class App extends React.Component {
                 <ul className={"list-group list-group-flush"}>
                     {
                         this.state.posts.map(
-                            post => <li className={"list-group-item"} key={post.data.id}>{post.data.title}</li>)
-                    }
+                            post =>
+
+                                <li className={"list-group-item"} key={post.data.id}>
+                                    <img src={post.data.thumbnail} alt={post.data.id} className={'thumbnail-img'}/>
+                                    <Link
+                                        to={{pathname: "/Image", state: {imgUrl: post.data.thumbnail}}}>
+                                        {post.data.title}
+                                    </Link>
+                                </li>
+                        )}
                 </ul>
+
             </div>
 
         );

@@ -1,13 +1,21 @@
 import {Route, Switch, BrowserRouter} from "react-router-dom"
-import Image from "./Image"
+import Image from "./Image.js"
 import App from "./App"
 import React from "react";
+
+
+const ErrorRoute = () => (
+    <div>
+        Got fucked!... Error 404
+    </div>
+)
 
 const Router = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path={"/"} component={App}/>
-            <Route exact path={"./Image"} component={Image}/>
+            <Route path="/" exact component={App}/>
+            <Route path="/Image" exact component={Image}/>
+            <Route component={ErrorRoute}/>
         </Switch>
     </BrowserRouter>
 
