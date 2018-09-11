@@ -11,9 +11,10 @@ let mainWindow;
 let imageWindow;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({width: 900, height: 680, show: true});
+    mainWindow = new BrowserWindow({width: 900, height: 680, show: false});
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
     mainWindow.on('closed', () => mainWindow = null);
+    mainWindow.once('ready-to-show', () => mainWindow.show())
 
     imageWindow = new BrowserWindow({width: 600, height: 600, parent: mainWindow, show: false});
     imageWindow.loadURL(isDev ? 'http://localhost:3000/Image' : `file://${path.join(__dirname, '../build/index.html')}`);

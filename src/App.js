@@ -5,6 +5,7 @@ import './Router'
 
 const electron = window.require('electron');
 const ipcRenderer = electron.ipcRenderer;
+const menu = electron.remote.Menu;
 
 class App extends React.Component {
     state = {
