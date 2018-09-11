@@ -51,6 +51,7 @@
 }
 
 .list-group-item {
+    cursor: pointer;
     position: relative;
     display: block;
     padding: .75rem 1.25rem;
@@ -59,8 +60,18 @@
     border: 1px solid rgba(0, 0, 0, .125);
 }
 
-.thumbnail-img {
+.thumbnail {
     height: 60px;
     width: 60px;
     border-radius: 30px;
+    margin: 10px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.list-group-item:hover {
+    background-color: #eeeeee;
 }

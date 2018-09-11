@@ -9,7 +9,8 @@ class Image extends React.Component {
     render() {
         return (
             <div>
-                <img src={this.props.location.state.imgUrl}/>
+                {/*Hello Image here*/}
+                <img src={this.props.location.state.imgUrl} alt={'thumbnail'}/>
             </div>
 
         )
