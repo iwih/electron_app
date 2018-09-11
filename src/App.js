@@ -3,6 +3,8 @@ import "./App.css"
 import axios from 'axios'
 import './Router'
 
+const electron = window.require('electron');
+const ipcRenderer = electron.ipcRenderer;
 
 class App extends React.Component {
     state = {
@@ -10,7 +12,8 @@ class App extends React.Component {
     }
 
     goToImagePage(imgUrl) {
-        this.props.history.push('/Image', {imgUrl: imgUrl})
+        // this.props.history.push('/Image', {imgUrl: imgUrl})
+        ipcRenderer.send('show-image-window', imgUrl)
     }
 
     componentDidMount() {
@@ -29,7 +32,7 @@ class App extends React.Component {
 
                         <li
                             className={"list-group-item flex-container"}
-                            key={post.data.id} onClick={() => this.goToImagePage(post.data.thumbnail)}>
+                            key={post.data.id} onClick={() => this.goToImagePage(post.data.preview.images[0].source.url)}>
 
                             <img src={post.data.thumbnail} alt={post.data.id} className={'thumbnail'}/>
                             {post.data.title}
