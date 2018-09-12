@@ -15,7 +15,7 @@ const Router = () => (
         <Switch>
             <Route path="/" exact component={App}/>
             <Route path="/Image" exact component={Image}/>
-            <Route component={ErrorRoute}/>
+            <Route component={App}/>
         </Switch>
     </BrowserRouter>
 
