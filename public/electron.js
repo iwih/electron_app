@@ -12,17 +12,31 @@ let imageWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({width: 900, height: 680, show: false});
-    mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+    mainWindow.loadURL(isDev ? 'http://localhost:3000' :
+        `file://${url.format({
+            pathname: path.join(__dirname, './'),
+            hash: 'baz',
+            protocol: 'file',
+            slashes: true,
+        })}`);
     mainWindow.on('closed', () => mainWindow = null);
     mainWindow.once('ready-to-show', () => mainWindow.show())
 
     imageWindow = new BrowserWindow({width: 600, height: 600, parent: mainWindow, show: false});
-    imageWindow.loadURL(isDev ? 'http://localhost:3000/Image' : `file://${path.join(__dirname, '../build/index.html')}`);
+    imageWindow.loadURL(isDev ? 'http://localhost:3000/Image' :
+        `file://${url.format({
+            pathname: path.join(__dirname, './Image'),
+            hash: 'baz',
+            protocol: 'file',
+            slashes: true,
+        })}`);
     imageWindow.on('close', (event) => {
         event.preventDefault()
         imageWindow.hide()
     });
 }
+
+
 
 app.on('ready', createWindow);
 
